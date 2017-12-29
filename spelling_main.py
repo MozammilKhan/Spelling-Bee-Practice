@@ -1,27 +1,18 @@
-import random
-
-# Import the required module for text
-# to speech conversion
-from gtts import gTTS
-
-# This module is imported so that we can
-# play the converted audio
+import random       # Import the required module for text to speech conversion
+from gtts import gTTS       # This module is imported so that we can play the converted audio
 import os
-
-# The text that you want to convert to audio
 grade = input('Please enter your grade level ')    #indicating grade level
 
+with open(grade +'.txt') as temp_file:
+    contents = [line.rstrip('\n') for line in temp_file]  #adding grade level words to a list
 
-with open(grade +'.txt') as temp_file
-  contents = [line.rstrip('n') for line in temp_file]  #adding grade level words to a list
 counter = 0
-removed_words = []
 chosen_word= random.choice(contents)
 
-while counter  3
+while counter < 3:
     chosen_word= random.choice(contents)
-    mytext = chosen_word
 
+    mytext = chosen_word
     # Language in which you want to convert
     language = 'en'
 
@@ -33,21 +24,25 @@ while counter  3
 
     # Saving the converted audio in a mp3 file named
     # welcome
-    myobj.save(welcome.mp3)
+    myobj.save('welcome.mp3')
 
     # Playing the converted file
-    os.system(welcome.mp3)
+    os.system('welcome.mp3')
+
     guess = input('enter spelling word ')
-    counter += 1
+
     should_restart = True
-    while should_restart
-        if guess !=  chosen_word
-            print('try again')
-            guess = input('enter spelling word')
-        if guess == chosen_word
+    while should_restart:
+        if guess == chosen_word:
             print('correct!')
             should_restart = True
             break
+        if guess != chosen_word:
+            print('try again')
+            counter += 1
+            guess = input('enter spelling word')
+
+
 
 
 
