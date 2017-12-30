@@ -1,6 +1,9 @@
 import random       # Import the required module for text to speech conversion
 from gtts import gTTS       # This module is imported so that we can play the converted audio
 import os
+from PyDictionary import PyDictionary
+dictionary=PyDictionary()
+
 grade = input('Please enter your grade level ')    #indicating grade level
 
 with open(grade +'.txt') as temp_file:
@@ -24,10 +27,10 @@ while counter < 3:
 
     # Saving the converted audio in a mp3 file named
     # welcome
-    myobj.save('welcome.mp3')
+    myobj.save('audio.mp3')
 
     # Playing the converted file
-    os.system('welcome.mp3')
+    os.system('audio.mp3')
 
     guess = input('enter spelling word ')
 
@@ -39,11 +42,14 @@ while counter < 3:
             break
         if guess != chosen_word:
             print('try again')
+            print(dictionary.meaning(chosen_word))
             counter += 1
             guess = input('enter spelling word')
 
 
 
+# want to add
+# remove words form original list if guessed correct already
 
 
 
