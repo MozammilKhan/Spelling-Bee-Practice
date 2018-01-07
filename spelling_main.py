@@ -44,7 +44,7 @@ while counter < 3:
             print('try again')
             print(dictionary.meaning(chosen_word))
             counter += 1
-            guess = input('enter spelling word')
+            guess = input('enter spelling word ')
 
 
 
